@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound Source (Device 1) | Soundproofing with Agricultural Waste Panels</title>
+<meta name="description" content="Device 1: plays calibrated test tones at the six standard octave bands, or sweeps through all of them automatically.">
+<meta name="theme-color" content="#123a75">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 52'%3E%3Cpath d='M2 3h42v27c0 11.5-9.4 17.6-21 21.5C11.4 47.6 2 41.5 2 30V3Z' fill='%23123a75' stroke='%23e3a01f' stroke-width='3'/%3E%3Ctext x='23' y='30' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff'%3ERJ%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<a class="visually-hidden" href="#main">Skip to main content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-contact">
+      <span>Aurangabad, Maharashtra</span>
+      <a href="mailto:info@rjschool.org">info@rjschool.org</a>
+    </div>
+    <span class="topbar-tag">Science Exhibition &middot; Sustainable Materials</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="crest" viewBox="0 0 46 52" aria-hidden="true">
+        <path d="M2 3h42v27c0 11.5-9.4 17.6-21 21.5C11.4 47.6 2 41.5 2 30V3Z" fill="#123a75" stroke="#e3a01f" stroke-width="2.5"/>
+        <path d="M8 9h30v20.5c0 8.4-6.9 12.9-15 15.9-8.1-3-15-7.5-15-15.9V9Z" fill="none" stroke="rgba(255,255,255,.35)"/>
+        <text x="23" y="27" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-weight="700" fill="#fff">RJ</text>
+        <path d="M14 33h18M16 37.5h14" stroke="#e3a01f" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">R.J. International School</span>
+        <span class="brand-sub">Acoustics Laboratory</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav">
+      <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="2"/></svg>
+      Menu
+    </button>
+    <nav class="mainnav" id="mainnav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="experiment.html">The Experiment</a></li>
+        <li><a href="source.html" aria-current="page">Sound Source</a></li>
+        <li><a href="meter.html">Sound Meter</a></li>
+        <li><a href="results.html">Results</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Device 1</span>
+    <h1>Sound Source</h1>
+    <p>
+      This device becomes the noise. Point its speaker at the panel, set a level,
+      and leave the volume alone for the rest of the experiment.
+    </p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="readout" id="readout">
+      <div class="readout-label" id="stateLabel">Ready</div>
+      <div class="readout-value"><span id="freqValue">—</span><span class="readout-unit" id="freqUnit">Hz</span></div>
+      <div class="readout-sub" id="readoutSub">Choose a tone below, or start the automatic sweep.</div>
+      <div class="progress" style="margin-top:18px;background:rgba(255,255,255,.16)">
+        <div class="fill" id="sweepProgress" style="background:var(--brand-gold)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="split">
+
+      <!-- ------------------------------------------------ manual controls -->
+      <div class="card card-top">
+        <h2 style="font-size:1.3rem">Play a single tone</h2>
+        <p class="hint">Tap a band to start it, tap again to stop. Useful for showing the
+        audience the effect live: play 1&nbsp;kHz and slide the panel in and out.</p>
+
+        <div class="tone-dial" id="toneDial" role="group" aria-label="Octave band tones"></div>
+
+        <div style="margin-top:22px">
+          <div class="label" id="levelLabel">Output level</div>
+          <input type="range" id="level" min="-40" max="0" step="1" value="-12"
+                 aria-describedby="levelReadout">
+          <div class="toolbar" style="justify-content:space-between">
+            <span class="hint" id="levelReadout">&minus;12 dBFS &middot; 25 % of full scale</span>
+            <span class="hint">quieter &larr;&nbsp;&nbsp;&rarr; louder</span>
+          </div>
+        </div>
+
+        <div style="margin-top:20px">
+          <div class="label" style="margin-bottom:8px">Signal type</div>
+          <div class="seg" id="waveSeg" role="group" aria-label="Signal type">
+            <button type="button" data-wave="sine" aria-pressed="true">Pure tone</button>
+            <button type="button" data-wave="pink" aria-pressed="false">Pink noise</button>
+          </div>
+          <p class="hint" style="margin-top:8px">
+            Pure tones give a band-by-band answer. Pink noise is broadband — good for a
+            quick "listen to the difference" demonstration, but the meter cannot file
+            it under one band.
+          </p>
+        </div>
+
+        <div class="toolbar" style="margin-top:20px">
+          <button class="btn btn-danger" type="button" id="stopAll">Stop everything</button>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------------- the sweep -->
+      <div class="card card-top">
+        <h2 style="font-size:1.3rem">Automatic sweep</h2>
+        <p class="hint">
+          Plays every selected band in turn, with a short silence between them, so the
+          baseline run and the panel run are identical. Start the sweep <em>after</em>
+          arming the Sound Meter on the other device.
+        </p>
+
+        <div class="label" style="margin-bottom:8px">Bands to play</div>
+        <div id="bandPicker" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:4px 14px;margin-bottom:18px"></div>
+
+        <div class="inline-fields">
+          <div class="field">
+            <label for="toneSeconds">Seconds per tone</label>
+            <select id="toneSeconds">
+              <option value="2">2 s — fast</option>
+              <option value="3" selected>3 s — recommended</option>
+              <option value="4">4 s</option>
+              <option value="5">5 s — noisy rooms</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="gapSeconds">Silence between tones</label>
+            <select id="gapSeconds">
+              <option value="1">1 s</option>
+              <option value="1.5" selected>1.5 s</option>
+              <option value="2">2 s</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="switch-row">
+          <input type="checkbox" id="leadIn" checked>
+          <label for="leadIn" style="text-transform:none;letter-spacing:0;font-weight:500;font-size:1rem">
+            Start with 3 seconds of silence (lets the meter settle)
+          </label>
+        </div>
+
+        <div class="toolbar" style="margin-top:18px">
+          <button class="btn btn-primary btn-lg" type="button" id="startSweep">Start sweep</button>
+          <button class="btn btn-outline" type="button" id="stopSweep" disabled>Stop</button>
+        </div>
+
+        <div class="status-line" style="margin-top:18px">
+          <span class="dot" id="sweepDot"></span>
+          <span id="sweepStatus">Idle — total run time about 27 s</span>
+        </div>
+
+        <ul class="log" id="sweepLog" style="margin-top:16px" aria-live="polite">
+          <li class="muted">The sweep timeline will appear here.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="note note-warn">
+      <span class="note-title">Keep the media volume fixed</span>
+      The on-screen level control and the phone's own volume buttons multiply
+      together. Set the phone volume once, before the baseline run, and do not touch
+      it — including not letting the screen lock and re-unlock into a different
+      volume. If the volume changes between the two runs, the insertion loss you
+      calculate is the volume change, not the panel.
+    </div>
+    <div class="note note-danger" style="margin-top:16px">
+      <span class="note-title">Hearing safety</span>
+      Sustained pure tones are tiring. Keep the level moderate, never hold the
+      speaker close to an ear, and stop immediately if a tone feels uncomfortable.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Why these six frequencies?</h3>
+        <p>
+          125&nbsp;Hz, 250&nbsp;Hz, 500&nbsp;Hz, 1&nbsp;kHz, 2&nbsp;kHz and 4&nbsp;kHz
+          are the standard octave bands used to rate building materials. Each is
+          double the one before, and together they cover the range that carries
+          speech, traffic and machinery noise.
+        </p>
+      </div>
+      <div class="card">
+        <h3>What "dBFS" means</h3>
+        <p>
+          The level control is in decibels relative to full scale — the loudest
+          signal the device can produce without distorting. &minus;12&nbsp;dBFS is a
+          quarter of full amplitude, which leaves plenty of headroom so the speaker
+          stays clean.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Using a Bluetooth speaker</h3>
+        <p>
+          Phones are weak below 250&nbsp;Hz. Connect a small speaker and this page
+          drives it exactly the same way — the low-frequency results become far more
+          trustworthy. Pair the speaker before starting, and never re-pair mid-run.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>R.J. International School</h4>
+        <p>
+          Acoustics laboratory demonstration, prepared for the school science
+          exhibition. Built as a plain web page so any student can open it on the
+          phone already in their pocket.
+        </p>
+      </div>
+      <div>
+        <h4>The demonstration</h4>
+        <ul>
+          <li><a href="experiment.html">Method &amp; materials</a></li>
+          <li><a href="source.html">Sound source</a></li>
+          <li><a href="meter.html">Sound meter</a></li>
+          <li><a href="results.html">Results &amp; charts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@rjschool.org">info@rjschool.org</a></li>
+          <li>Aurangabad, Maharashtra</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> R.J. International School</span>
+      <span>Measurements are indicative — this is a classroom rig, not a certified acoustics laboratory.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/acoustics.js"></script>
+<script src="assets/js/source.js"></script>
+</body>
+</html>
