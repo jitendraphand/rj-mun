@@ -1,6 +1,6 @@
 # Soundproofing with Agricultural Waste Panels
 
-A two-device classroom demonstration for the R.J. International School science
+A two-device classroom demonstration for the RJ International School science
 exhibition. Open the site on two phones (or a phone and a laptop): one becomes a
 **calibrated sound source**, the other a **sound-level meter**. Stand a panel
 pressed from crop residue between them and the site measures, band by band, how
@@ -88,10 +88,18 @@ insertion loss and the noise-floor flags.
 
 ## Re-skinning
 
-All brand colours, fonts and geometry are CSS custom properties at the top of
-`assets/css/site.css` — change `--brand-navy`, `--brand-gold` and the font stacks
-to match the school stylesheet and the whole site follows. The crest is inline
-SVG in each page's header; replace those five blocks with the school logo.
+The design follows the school site at rjschool.org: royal blue (`--brand-blue`
+#1565c0), a green accent taken from the logo leaf (`--brand-green` #00963f),
+light grey surfaces, and the wordmark in bold italic. All of it lives as CSS
+custom properties at the top of `assets/css/site.css`, so changing those tokens
+re-skins every page.
+
+The logo is inline SVG — concentric arcs plus the green leaf — appearing twice
+per page (masthead and footer). To use the school's own artwork, replace the
+`<svg class="logo-mark">` blocks; the surrounding markup and sizing stay as they
+are. The wordmark is set in a system sans rather than a webfont so the pages
+carry no external dependency; swap `--font-display` for the school's face if you
+want an exact match.
 
 The chart palette (`--series-1`, `--series-2`, `--series-3`) is a
 colourblind-safe set validated against a white chart surface: worst adjacent pair

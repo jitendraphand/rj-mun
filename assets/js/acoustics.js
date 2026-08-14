@@ -252,7 +252,7 @@
   RJ.toCSV = function (session) {
     var a = RJ.analyse(session);
     var lines = [];
-    lines.push('R.J. International School - Soundproofing test');
+    lines.push('RJ International School - Soundproofing test');
     lines.push('Session,' + session.id);
     lines.push('Recorded,' + session.created);
     lines.push('Sample,"' + (session.sample || '') + '"');
